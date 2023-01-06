@@ -20,6 +20,8 @@ export class EditContactComponent implements OnInit {
   ngOnInit(): void {
     const contactId = this.route.snapshot.paramMap.get('id');
     if (contactId !== null) {
+      console.log(contactId);
+
       this.contactsService
         .httpGetContactById(+contactId)
         .subscribe((response) => (this.contact = response));

@@ -2,6 +2,7 @@
   <app-contact *ngFor="let contact of contacts" [contact]="contact" (contactToRemoveId)="onDeleteContact($event)">
   </app-contact>
   <div>
-    <button class="bg-black font-bold text-xl rounded text-white px-8 py-4" (click)="goToAddContact()">+</button>
+    <app-bouton [label]="' + '" (action)="goToAddContact()"></app-bouton>
+    <!-- <button class="bg-black font-bold text-xl rounded text-white px-8 py-4" (click)="goToAddContact()">+</button> -->
   </div>
 </main>

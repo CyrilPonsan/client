@@ -18,4 +18,8 @@ export class ContactComponent implements OnInit {
   onContactToRemove(contactId: number) {
     this.contactToRemoveId.emit(contactId);
   }
+
+  goToEditContact(contactId: number): void {
+    this.router.navigate(['/edit-contact', contactId]);
+  }
 }

@@ -14,17 +14,18 @@ export class ContactFormComponent implements OnInit {
   @Input() contact!: Contact;
   contactForm!: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private contactsService: ContactsService,
-    private router: Router
-  ) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    console.log(this.contact);
+
     this.contactForm = this.formBuilder.group({
       prenom: [null, [Validators.required]],
       nom: [null, Validators.required],
     });
+    if (this.contact) {
+      this.contactForm.patchValue(this.contact);
+    }
   }
 
   onSubmit(): void {
@@ -37,13 +38,3 @@ export class ContactFormComponent implements OnInit {
     }
   }
 }
-
-/*
-this.contactsService
-.httpAddContact(
-  this.contactForm.value.prenom,
-  this.contactForm.value.nom
-)
-.subscribe((response: Contact) =>
-  this.router.navigateByUrl('/contacts')
-); */

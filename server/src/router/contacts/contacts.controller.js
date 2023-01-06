@@ -16,7 +16,7 @@ function httpGetContacts(req, res) {
 }
 
 function httpGetContactById(req, res) {
-  const contactId = req.params.id;
+  const contactId = +req.params.id;
   const contact = contacts.find((element) => element.id === contactId);
   if (!contact) {
     return res.status(404).json({ message: "contact not found !" });
