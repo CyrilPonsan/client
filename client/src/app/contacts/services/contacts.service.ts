@@ -11,4 +11,24 @@ export class ContactsService {
   httpGetContacts(): Observable<Contact[]> {
     return this.http.get<Contact[]>(`${this.apiUrl}/`);
   }
+
+  httpRemoveContact(contactId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${contactId}`);
+  }
+
+  httpAddContact(prenom: string, nom: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/`, { prenom, nom });
+  }
+
+  httpGetContactById(contactId: number): Observable<Contact> {
+    return this.http.get<Contact>(`${this.apiUrl}/${contactId}`);
+  }
+
+  httpUpdateContact(
+    prenom: string,
+    nom: string,
+    contactId: number
+  ): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${contactId}`, { prenom, nom });
+  }
 }

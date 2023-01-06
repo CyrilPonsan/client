@@ -1,0 +1,16 @@
+<main class="w-full min-h-[80vh] justify-center mx-auto text-sm mb-10 flex flex-col items-center">
+  <form class="w-48 flex flex-col items-center gap-y-4 md:gap-y-8 mx-8" [formGroup]="contactForm">
+    <label class="flex flex-col">prénom
+      <input
+        class="shadow border-stone-300 border w-80 md:w-96 p-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        type="text" id="prenom" formControlName="prenom" placeholder="jean"></label>
+    <label class="flex flex-col">nom
+      <input
+        class="shadow border-stone-300 border w-80 md:w-96 p-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        type="text" id="nom" formControlName="nom" placeholder="dupont"></label>
+    <div class="w-96 flex justify-end">
+      <button class="text-xs border-stone-300 border-2 py-2 px-8 font-bold bg-black text-white"
+        (click)="onSubmit()">submit</button>
+    </div>
+  </form>
+</main>

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Contact } from 'src/app/core/models/contact.model';
 
 @Component({
@@ -7,6 +8,14 @@ import { Contact } from 'src/app/core/models/contact.model';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
+  @Output() contactToRemoveId = new EventEmitter<number>();
   @Input() contact!: Contact;
+
+  constructor(private router: Router) {}
+
   ngOnInit(): void {}
+
+  onContactToRemove(contactId: number) {
+    this.contactToRemoveId.emit(contactId);
+  }
 }

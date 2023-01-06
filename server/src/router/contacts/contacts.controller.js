@@ -15,6 +15,15 @@ function httpGetContacts(req, res) {
   return res.status(200).json(contacts);
 }
 
+function httpGetContactById(req, res) {
+  const contactId = req.params.id;
+  const contact = contacts.find((element) => element.id === contactId);
+  if (!contact) {
+    return res.status(404).json({ message: "contact not found !" });
+  }
+  return res.status(200).json(contact);
+}
+
 function httpAddNewContact(req, res) {
   const contact = req.body;
   contacts = [
@@ -33,7 +42,7 @@ function httpRemoveContact(req, res) {
   contacts = contacts.filter((contact) => contactId !== contact.id);
   return res
     .status(201)
-    .json({ message: "contact supprimé !", contactToRemove });
+    .json({ message: "contact supprimé !", data: contacts });
 }
 
 function httpUpdateContact(req, res) {
@@ -72,4 +81,5 @@ module.exports = {
   httpAddNewContact,
   httpRemoveContact,
   httpUpdateContact,
+  httpGetContactById,
 };

@@ -1,7 +1,9 @@
 <div class="flex flex-col font-bold justify-center items-center gap-y-4 border-stone-300 border-2 p-4">
   <p class="text-xl">{{contact.prenom | titlecase}} {{contact.nom | titlecase}}</p>
   <div class="flex justify-center items-center gap-x-4">
-    <button class="text-xs border-stone-300 border-2 p-2 bg-black text-white">supprimer</button>
-    <button class="text-xs border-stone-300 border-2 p-2 bg-black text-white">modifier</button>
+    <button class="text-xs border-stone-300 border-2 p-2 bg-black text-white"
+      (click)="onContactToRemove(contact.id)">supprimer</button>
+    <a class="text-xs border-stone-300 border-2 p-2 bg-black text-white"
+      routerLink="/contacts/edit-contact/toto">modifier</a>
   </div>
 </div>
