@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-MONGO_URL = process.env.MONGO_URL_AUTH;
-
 mongoose.connection.on("error", (err) => {
   console.log("err", err);
 });
@@ -9,6 +7,7 @@ mongoose.connection.on("connected", (err, res) => {
   console.log("mongoose is connected");
 });
 
-const mainDBConn = mongoose.createConnection(MONGO_URL);
+const authDBConn = mongoose.createConnection(process.env.MONGO_URL_AUTH);
+const mainDBConn = mongoose.createConnection(process.env.MONGO_URL_MAIN);
 
-module.exports = { mainDBConn };
+module.exports = { authDBConn, mainDBConn };
