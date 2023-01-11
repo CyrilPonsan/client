@@ -2,7 +2,6 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const userDB = require("../models/mongo.db.models/user.db.model");
-const { exists } = require("../models/mongo.db.models/user.db.model");
 
 mongoose.connection.on("error", (err) => {
   console.log("err", err);
@@ -14,7 +13,10 @@ mongoose.connection.on("connected", (err, res) => {
 const DEFAULT_USER_ID = 1;
 
 async function createUser() {
-  const roles = ["tech", process.argv[4]];
+  const roles = ["tech"];
+  if (process.argv[4]) {
+    roles.push(process.argv[4]);
+  }
   const hash = await bcrypt.hash(process.argv[3], 10);
   const user = await userDB.findOneAndUpdate(
     {

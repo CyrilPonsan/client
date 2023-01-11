@@ -1,6 +1,6 @@
 const clientDB = require("./mongo.db.models/client.db.model");
 
-DEFAULT_clienT_ID = 1;
+DEFAULT_CLIENT_ID = 1;
 
 async function addNewClient(newClient) {
   try {
@@ -58,11 +58,11 @@ async function deleteClient(clientId) {
 }
 
 async function _getLatestClientId() {
-  const latestclient = await clientDB.findOne().sort("-id");
-  if (!latestclient) {
-    return +DEFAULT_clienT_ID;
+  const latestClient = await clientDB.findOne().sort("-id");
+  if (!latestClient) {
+    return +DEFAULT_CLIENT_ID;
   }
-  return +latestclient.id + 1;
+  return +latestClient.id + 1;
 }
 
 module.exports = {
