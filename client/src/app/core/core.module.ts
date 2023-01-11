@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContactsModule } from '../contacts/contacts.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
+import { ClientModule } from '../client/client.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, HttpClientModule, ContactsModule, SharedModule],
+  imports: [CommonModule, HttpClientModule, ClientModule, SharedModule],
 })
 export class CoreModule {}

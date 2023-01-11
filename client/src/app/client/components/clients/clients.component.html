@@ -1,8 +1,8 @@
 <main class="min-h-[100vh] flex flex-wrap justify-center items-center gap-x-8">
-  <app-contact *ngFor="let contact of contacts" [contact]="contact" (contactToRemoveId)="onDeleteContact($event)">
-  </app-contact>
+  <app-client *ngFor="let client of clients" [client]="client" (clientToRemoveId)="onDeleteClient($event)">
+  </app-client>
   <div>
-    <app-bouton [label]="' + '" (action)="goToAddContact()"></app-bouton>
+    <app-bouton [label]="' + '" (action)="goToAddClient()"></app-bouton>
     <!-- <button class="bg-black font-bold text-xl rounded text-white px-8 py-4" (click)="goToAddContact()">+</button> -->
   </div>
 </main>

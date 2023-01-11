@@ -1,0 +1,7 @@
+<div class="flex flex-col shadow-lg font-bold justify-center items-center gap-y-4 border-stone-300 border-2 p-4">
+  <p class="text-xl">{{client.prenom | titlecase}} {{client.nom | titlecase}}</p>
+  <div class="flex justify-center items-center gap-x-4">
+    <app-bouton [label]="'supprimer'" (action)="onClientToRemove(client.id)"></app-bouton>
+    <app-bouton [label]="'modifier'" (action)="goToEditClient(client.id)"></app-bouton>
+  </div>
+</div>
