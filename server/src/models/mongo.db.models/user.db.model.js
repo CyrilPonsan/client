@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { authDBConn } = require("../../services/mongo.service");
+const { regexMail } = require("../../services/regEx.service");
 
 const userSchema = mongoose.Schema({
   username: {
