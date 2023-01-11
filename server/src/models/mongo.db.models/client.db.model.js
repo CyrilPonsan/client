@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const { mainDBConn } = require("../../services/mongo.service");
 
-const contactSchema = mongoose.Schema({
+const clientSchema = mongoose.Schema({
   nom: {
     type: String,
     required: true,
@@ -9,4 +10,4 @@ const contactSchema = mongoose.Schema({
   id: { type: Number, required: true },
 });
 
-module.exports = mongoose.model("Contact", contactSchema);
+module.exports = mainDBConn.model("Client", clientSchema);

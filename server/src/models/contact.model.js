@@ -1,15 +1,14 @@
-const { findOneAndUpdate } = require("./mongo.db.models/contact.db.model");
-const contactDB = require("./mongo.db.models/contact.db.model");
+const clientDB = require("./mongo.db.models/client.db.model");
 
-DEFAULT_CONTACT_ID = 1;
+DEFAULT_clienT_ID = 1;
 
-async function addNewContact(newContact) {
+async function addNewClient(newClient) {
   try {
-    await contactDB.findOneAndUpdate(
+    await clientDB.findOneAndUpdate(
       {
-        id: await _getLatestContactId(),
+        id: await _getLatestClientId(),
       },
-      newContact,
+      newClient,
       { upsert: true }
     );
   } catch (err) {
@@ -17,67 +16,59 @@ async function addNewContact(newContact) {
   }
 }
 
-async function getAllContacts() {
+async function getAllClients() {
   try {
-    return await contactDB.find({}, { _id: 0, _v: 0 }).sort({ nom: 1 });
+    return await clientDB.find({}, { _id: 0, _v: 0 }).sort({ nom: 1 });
   } catch (err) {
     console.log(err);
   }
 }
 
-async function _getLatestContactId() {
-  const latestContact = await contactDB.findOne().sort("-id");
-  if (!latestContact) {
-    return +DEFAULT_CONTACT_ID;
-  }
-  return +latestContact.id + 1;
-}
-
-async function getContactById(contactId) {
+async function getClientById(clientId) {
   try {
-    const contactToUpdate = await contactDB.findOne({ id: contactId });
-    return contactToUpdate;
+    const clientToUpdate = await clientDB.findOne({ id: clientId });
+    return clientToUpdate;
   } catch (err) {
     console.log(err);
   }
 }
 
-async function updateContact(contactId, contact) {
+async function updateClient(clientId, client) {
   try {
-    const updatedContact = await contactDB.findOneAndUpdate(
-      { id: contactId },
-      contact
+    const updatedclient = await clientDB.findOneAndUpdate(
+      { id: clientId },
+      client
     );
-    return updatedContact;
+    return updatedclient;
   } catch (err) {
     console.log(err);
   }
 }
 
-async function deleteContact(contactId) {
+async function deleteClient(clientId) {
   try {
-    const deletedContact = await contactDB.deleteOne({ id: contactId });
-    if (!deletedContact) {
+    const deletedclient = await clientDB.deleteOne({ id: clientId });
+    if (!deletedclient) {
       return false;
     }
-    return deletedContact;
+    return deletedclient;
   } catch (err) {
     console.log(err);
   }
 }
 
-async function _getLatestContactId() {
-  const latestContact = await contactDB.findOne().sort("-id");
-  if (!latestContact) {
-    return +DEFAULT_CONTACT_ID;
+async function _getLatestClientId() {
+  const latestclient = await clientDB.findOne().sort("-id");
+  if (!latestclient) {
+    return +DEFAULT_clienT_ID;
   }
-  return +latestContact.id + 1;
+  return +latestclient.id + 1;
 }
 
 module.exports = {
-  addNewContact,
-  getAllContacts,
-  getContactById,
-  updateContact,
-  deleteContact,
+  addNewClient,
+  getAllClients,
+  getClientById,
+  updateClient,
+  deleteClient,
 };
