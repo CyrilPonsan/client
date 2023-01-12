@@ -4,7 +4,7 @@ const {
   getClientById,
   updateClient,
   deleteClient,
-} = require("../../models/contact.model");
+} = require("../../models/client.model");
 
 async function httpGetClients(req, res) {
   const clients = await getAllClients();

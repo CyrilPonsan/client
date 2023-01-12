@@ -17,6 +17,7 @@ async function createUser() {
   if (process.argv[4]) {
     roles.push(process.argv[4]);
   }
+  const date = new Date();
   const hash = await bcrypt.hash(process.argv[3], 10);
   const user = await userDB.findOneAndUpdate(
     {
@@ -26,6 +27,7 @@ async function createUser() {
       username: process.argv[2],
       password: hash,
       roles: roles,
+      createdAt: date,
     },
     { upsert: true }
   );

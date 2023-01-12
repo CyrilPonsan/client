@@ -1,6 +1,6 @@
 const clientDB = require("./mongo.db.models/client.db.model");
 
-DEFAULT_CLIENT_ID = 1;
+const DEFAULT_CLIENT_ID = 1;
 
 async function addNewClient(newClient) {
   try {

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const { authDBConn } = require("../../services/mongo.service");
-const { regexMail } = require("../../services/regEx.service");
 
 const userSchema = mongoose.Schema({
   username: {
@@ -19,6 +18,10 @@ const userSchema = mongoose.Schema({
   },
   roles: {
     type: Array,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
     required: true,
   },
 });
